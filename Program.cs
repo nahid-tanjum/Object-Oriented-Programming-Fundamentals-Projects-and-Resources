@@ -1,41 +1,49 @@
 ﻿using System;
 
-namespace CounterTask
+namespace HelloWorld
 {
-    public class Program
+    class Program
     {
-        public static void Main(string[] args)
+        public void Print(string message)
         {
-            Counter[] myCounters = new Counter[3];
-            int i;
-
-            myCounters[0] = new Counter("Counter 1");
-            myCounters[1] = new Counter("Counter 2");
-            myCounters[2] = myCounters[0];
-
-            for (i = 0; i < 10; i++)
-            {
-                myCounters[0].Increment();
-            }
-
-            for (i = 0; i < 15; i++)
-            {
-                myCounters[1].Increment();
-            }
-
-            PrintCounters(myCounters);
-
-            myCounters[2].Reset();
-
-            PrintCounters(myCounters);
+            Console.WriteLine(message);
         }
+        public static void Main(string[] args)
 
-        private static void PrintCounters(Counter[] counters)
         {
-            foreach (Counter c in counters)
+            Message[] messages =
+                {
+                new Message("Welcome back"),
+                new Message("What a lovely name"),
+                new Message("Great name"),
+                new Message("Oh hi!"),
+                new Message("That is a silly name")
+            };
+            Console.WriteLine("Please enter your name:");
+            string name = Console.ReadLine();
+
+            if (name.ToLower() == "afra")
             {
-                Console.WriteLine("{0} is {1}", c.Name, c.Ticks);
+                messages[0].Print();
             }
+            else if (name.ToLower() == "eli")
+            {
+                messages[1].Print();
+            }
+            else if (name.ToLower() == "emily")
+            {
+                messages[2].Print();
+            }
+            else if (name.ToLower() == "ramya")
+            {
+                messages[3].Print();
+            }
+            else
+            {
+                messages[4].Print();
+            }
+
+            Console.ReadLine();
         }
     }
 }
