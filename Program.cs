@@ -1,23 +1,37 @@
-﻿namespace Swin_Adventure
-{
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            LookCommand _lookCommand = new LookCommand();
-            Player _player = new Player("Nahid", "The epic programmer");
-            Item _gem = new Item(new string[] { "gem", "shiny gem" }, "a gem", "This is a shiny green gem");
-            Bag _bag = new Bag(new string[] { "bag", "backpack" }, "bag", "This is a big blue bag");
+﻿using FileSystemSimulation;
 
-            _player.Inventory.Put(_gem);
-            _player.Inventory.Put(_bag);
-            string[] input1 = new string[] { "look", "at", "inventory" };
-            Console.WriteLine(_lookCommand.Execute(_player, input1));
-            string[] input2 = new string[] { "look", "at", "gem" };
-            Console.WriteLine(_lookCommand.Execute(_player, input2));
-            _bag.Inventory.Put(_gem);
-            string[] input3 = new string[] { "look", "at", "bag" };
-            Console.WriteLine(_lookCommand.Execute(_player, input3));
-        }
+class Program
+{
+    static void Main(string[] args)
+    {
+        var fs = new FileSystem();
+
+        // Creating and adding files to 'innerFolder'
+        var innerFolder = new Folder("Inner Folder");
+        innerFolder.Add(new FileSystemSimulation.File("InnerFile1.txt", 500));
+        innerFolder.Add(new FileSystemSimulation.File("InnerFile2.txt", 600));
+
+        // Creating 'outerFolder', adding 'innerFolder' to it
+        var outerFolder = new Folder("Outer Folder");
+        outerFolder.Add(innerFolder);
+
+        // Adding 'outerFolder' to the file system
+        fs.Add(outerFolder);
+
+        // Existing code
+        var saveFiles = new Folder("Save files");
+        saveFiles.Add(new FileSystemSimulation.File("Save 1 - The Citadel.data", 2348));
+        saveFiles.Add(new FileSystemSimulation.File("Save 2 - Artemis Tau.data", 6378));
+        saveFiles.Add(new FileSystemSimulation.File("Save 3 - Serpent Nebula.data", 973));
+        fs.Add(saveFiles);
+
+        var newFolder = new Folder("'New folder' is empty!");
+        fs.Add(newFolder);
+
+        fs.Add(new FileSystemSimulation.File("AnImage.jpg", 5342));
+        fs.Add(new FileSystemSimulation.File("SomeFile.txt", 832));
+
+        // Print the contents of the file system
+        fs.PrintContents();
     }
 }
