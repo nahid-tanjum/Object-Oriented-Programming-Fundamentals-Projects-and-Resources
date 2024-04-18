@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Swin_Adventure
 {
-    public class Item : GameObject
+    public interface IHaveInventory
     {
-        public Item(string[] idents, string name, string desc) : base(idents, name, desc) { }
+        GameObject? Locate(string id);
+        string Name { get; }
     }
 }

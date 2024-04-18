@@ -33,7 +33,7 @@ namespace Swin_Adventure
         public string FirstId
         {
             get
-            { 
+            {
                 if (_identifiers.Count == 0)
                 {
                     return "";

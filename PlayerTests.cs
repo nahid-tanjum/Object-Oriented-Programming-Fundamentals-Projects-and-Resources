@@ -8,13 +8,13 @@ namespace Swin_AdventureUnitTests
     public class PlayerTests
     {
         private Player _player;
-        private Item _item;
+        private Item _shovel;
 
         [SetUp]
         public void SetUp()
         {
             _player = new Player("Fred", "the mighty programmer");
-            _item = new Item(new String[] { "shovel", "spade" }, "a shovel", "This is a mighty fine shovel");
+            _shovel = new Item(new String[] { "shovel", "spade" }, "a shovel", "This is a mighty fine shovel");
         }
 
         [Test]
@@ -26,8 +26,8 @@ namespace Swin_AdventureUnitTests
         [Test]
         public void TestLocateItems()
         {
-            _player.Inventory.Put(_item);
-            Assert.That(_item, Is.EqualTo(_player.Locate("shovel")));
+            _player.Inventory.Put(_shovel);
+            Assert.That(_shovel, Is.EqualTo(_player.Locate("shovel")));
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace Swin_AdventureUnitTests
         [Test]
         public void TestPlayerFullDescription()
         {
-            _player.Inventory.Put(_item);
+            _player.Inventory.Put(_shovel);
             Assert.That(_player.FullDescription, Is.EqualTo("You are Fred, the mighty programmer.\nYou are carrying: \n  a shovel (shovel)\n"));
         }
     }

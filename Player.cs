@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Swin_Adventure
 {
-    public class Player : GameObject
+    public class Player : GameObject, IHaveInventory
     {
         private Inventory _inventory;
 
@@ -15,7 +15,7 @@ namespace Swin_Adventure
             _inventory = new Inventory();
         }
 
-        public GameObject Locate(string id)
+        public GameObject? Locate(string id)
         {
 
             if (this.AreYou(id))

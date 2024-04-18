@@ -32,7 +32,7 @@ namespace Swin_Adventure
             _items.Add(itm);
         }
 
-        public Item Take(string id)
+        public Item? Take(string id)
         {
             foreach (Item itm in _items)
             {
@@ -45,7 +45,7 @@ namespace Swin_Adventure
             return null;
         }
 
-        public Item Fetch(string id)
+        public Item? Fetch(string id)
         {
             foreach (Item itm in _items)
             {

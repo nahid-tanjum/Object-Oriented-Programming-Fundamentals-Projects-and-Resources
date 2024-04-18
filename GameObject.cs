@@ -8,8 +8,9 @@ namespace Swin_Adventure
 {
     public abstract class GameObject : IdentifiableObject
     {
-        private string _description;
         private string _name;
+        private string _description;
+
         public GameObject(string[] ids, string name, string desc) : base(ids)
         {
             _name = name;

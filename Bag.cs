@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace Swin_Adventure
 {
-    public class Bag : Item
+    public class Bag : Item, IHaveInventory
     {
         private Inventory _inventory;
 
@@ -16,7 +16,7 @@ namespace Swin_Adventure
             _inventory = new Inventory();
         }
 
-        public GameObject Locate(string id)
+        public GameObject? Locate(string id)
         {
             if (this.AreYou(id))
             {
