@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Swin_Adventure\Swin_Adventure.csproj" />
+    <ProjectReference Include="..\Swin_Adventure2\Swin_Adventure2.csproj" />
   </ItemGroup>
 
 </Project>
