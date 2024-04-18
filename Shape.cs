@@ -1,22 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using SplashKitSDK;
+
 
 namespace ShapeDrawer
 {
-    public abstract class Shape
+    public class Shape
     {
         private SplashKitSDK.Color _color;
         private float _x, _y;
         private int _width, _height;
         private bool _selected;
 
-        public Shape(Color color)
+        public Shape()
         {
-            _color = color;
+            _color = SplashKitSDK.Color.Green;
             _x = _y = 0;
+            _width = _height = 100;
             _selected = false;
         }
-        public Shape() : this(Color.Yellow) { }
 
         public Color Color
         {
@@ -35,14 +40,51 @@ namespace ShapeDrawer
             get { return _y; }
             set { _y = value; }
         }
-        public bool Selected
+
+        public int Width
         {
-            get { return _selected; }
+            get { return _width; }
+            set { _width = value; }
+        }
+
+        public int Height
+        {
+            get { return _height; }
+            set { _height = value; }
+        }
+        public bool Selected 
+        {
+            get { return _selected; } 
             set { _selected = value; }
         }
-        public abstract void Draw();
-        public abstract void DrawOutline();
-       public abstract bool IsAt(Point2D point);
+        
+            
+        
 
+        public void Draw()
+        {
+            SplashKit.FillRectangle(_color, _x, _y, _width, _height);
+            if (_selected ) 
+            {
+                this.DrawOutline();
+            }
+        }
+
+        public bool IsAt(Point2D pt)
+        {
+            if (pt.X >= _x && pt.X <= _x + _width &&
+                pt.Y >= _y && pt.Y <= _y + _height)
+                return true;
+            else
+                return false;
+        }
+        public void DrawOutline()
+        {
+                SplashKit.DrawRectangle(Color.Black, _x - 2, _y - 2, _width + 4, _height + 4);
+            
+        }
     }
+
+
 }
+

@@ -1,6 +1,10 @@
-﻿using System;
+﻿using SplashKitSDK;
+using System;
 using System.Collections.Generic;
-using SplashKitSDK;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ShapeDrawer
 {
@@ -34,7 +38,7 @@ namespace ShapeDrawer
                 List<Shape> result = new List<Shape>();
                 foreach (Shape shape in _shapes)
                 {
-                    if (shape.Selected)
+                    if (shape.Selected == true)
                     {
                         result.Add(shape);
                     }
@@ -63,7 +67,7 @@ namespace ShapeDrawer
                 }
                 else
                 {
-                    //shape.Selected = false;
+                    shape.Selected = false;
                 }
             }
         }
